@@ -29,10 +29,12 @@ get '/videos/:id/url' do
   get_video_url(params[:id])
 end
 
-
-
 post '/videos' do
   @title = params[:title]
   @url = params[:url]
   new_video(@title, @url)
+end
+
+get '/login' do
+  erb :login
 end
