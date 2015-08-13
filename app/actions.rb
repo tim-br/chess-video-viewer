@@ -6,6 +6,9 @@ def get_video_url(id)
   Video.find(id).url
 end
 
+def new_video(title, url)
+  Video.create(title: title, url: url)
+end
 # Homepage (Root path)
 get '/' do
   erb :index
@@ -24,4 +27,12 @@ end
 get '/videos/:id/url' do
   content_type :json
   get_video_url(params[:id])
+end
+
+
+
+post '/videos' do
+  @title = params[:title]
+  @url = params[:url]
+  new_video(@title, @url)
 end
