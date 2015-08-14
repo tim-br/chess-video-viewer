@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -42,13 +43,13 @@
             <ul class="sidebar-nav">
                 <li class="sidebar-brand">
                     <a href="#">
-                      Top Level Chess
+                        Start Bootstrap
                     </a>
                 </li>
 
                 <% @videos.each do |v| %>
-                <li class="video_links" id="<%=v.id%>">
-                    <a><%= v.title %></a>
+                <li>
+                    <a href="/video/<%=v.id%>/view"><%= v.title %></a>
                 </li>
                 <% end %>
 
@@ -60,17 +61,12 @@
         <div id="page-content-wrapper">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-lg-12" id="yolo">
+                    <div class="col-lg-12">
                         <h1>Simple Sidebar</h1>
                         <p>This template has a responsive menu toggling system. The menu will appear collapsed on smaller screens, and will appear non-collapsed on larger screens. When toggled using the button below, the menu will appear/disappear. On small screens, the page content will be pushed off canvas.</p>
                         <p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p>
                         <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle Menu</a>
-
-
                     </div>
-                    <div id="video">
-                    </div>
-
                 </div>
             </div>
         </div>
@@ -85,16 +81,6 @@
     $("#menu-toggle").click(function(e) {
         e.preventDefault();
         $("#wrapper").toggleClass("toggled");
-    });
-
-    $(".video_links").click(function(e) {
-        //e.preventDefault();
-        alert("yolo");
-        $("#video").append("<iframe width="560" height="315" src="https://www.youtube.com/embed/BsUanOK8u5M" frameborder="0" allowfullscreen>"</iframe>
-);
-
-        //$("#video").html("<iframe width="420" height="315" src="https://youtu.be/ozlx-W1up-U" frameborder="0" allowfullscreen></iframe>");
-
     });
     </script>
 
