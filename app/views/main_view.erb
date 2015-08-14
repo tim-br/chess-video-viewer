@@ -49,7 +49,7 @@
 
                 <% @videos.each do |v| %>
                 <li class="video-links">
-                    <div><%= v.title %></div>
+                    <div id=<%=v.id%>><%= v.title %></div>
                 </li>
                 <% end %>
 
@@ -103,39 +103,13 @@
        alert(url);
      })
 
-     //alert(mine.responseText);
-
-      // var result_promise = $.ajax({
-      //   dataType: 'json',
-      //   //data: 'id=10',
-      //   //jsonp: 'jsonp_callback',
-      //   url: "http://localhost:3000/videos/4/url",
-      //   method: 'GET'
-      // });
-      //
-      // result_promise.then(function(){alert("okgo")});
-      // result_promise.fail(function(){alert("it failed")});
-      //
-      // console.log(result_promise.responseText);
-
-
-      // console.log('hello again')
-      // $.get( "http://localhost:3000/videos/4/url", function(data) {
-      //   alert(data);
-      //   alert( "Load was performed." );
-      // }).done(function(response){
-      //   console.log("sucess");
-      //   console.log(response);
-      //
-      // }).fail(function(response){
-      //   console.log("failed");
-      //   console.log(response);
-      // });
     }
 
     $(".video-links").click(function(e) {
         // e.preventDefault();
-        yolo(2);
+        var att = $(this)
+        var id = att.children().attr("id");
+        yolo(id);
         console.log('hello');
     });
 
