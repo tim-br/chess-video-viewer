@@ -43,7 +43,7 @@
             <ul class="sidebar-nav">
                 <li class="sidebar-brand">
                     <a href="#">
-                        Start Bootstrap
+                        Top Level Chess
                     </a>
                 </li>
 
@@ -52,6 +52,10 @@
                     <div id=<%=v.id%>><%= v.title %></div>
                 </li>
                 <% end %>
+
+                <li id="home-text">
+                    <div> Home Page</div>
+                </li>
 
             </ul>
         </div>
@@ -62,14 +66,18 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12">
-                        <h1>Simple Sidebar</h1>
-                        <p>This template has a responsive menu toggling system. The menu will appear collapsed on smaller screens, and will appear non-collapsed on larger screens. When toggled using the button below, the menu will appear/disappear. On small screens, the page content will be pushed off canvas.</p>
-                        <p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p>
+                        <div id="hide-div">
+                        <h1>Top Level Chess</h1>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam quis facilisis urna, in viverra mi. Nunc finibus erat luctus metus mattis scelerisque. Ut purus nunc, tempor nec dictum at, sollicitudin sit amet erat. In hac habitasse platea dictumst. Pellentesque vel nisi eu nunc tempor venenatis sit amet sit amet neque. Duis tincidunt lobortis ex. Pellentesque eleifend nunc a ante blandit, eget gravida nulla accumsan. Phasellus quis libero a nisl interdum elementum. Vivamus tincidunt quam sed nulla porttitor sodales. Duis non velit porttitor, consequat risus eu, semper magna. Cras viverra nisl ut lacus vehicula, vel ullamcorper dolor tristique. Etiam dictum varius mauris a viverra.</p>
+                        <p>Vestibulum vel urna sed leo elementum vehicula ac a eros. Sed nibh mauris, porttitor nec ornare id, imperdiet nec nunc. Donec congue mattis pellentesque. Ut congue massa faucibus dictum suscipit. Maecenas lobortis pharetra odio. Mauris quis urna risus. Sed vehicula tellus ac blandit tempor. Nullam auctor velit in nulla pulvinar, sit amet mattis nunc dapibus. Integer et consequat mauris. Quisque consequat consequat lorem vitae blandit. Proin consectetur leo at turpis tempor, a sodales sapien maximus. Donec nec iaculis lectus. Nunc vitae malesuada arcu, ac faucibus lacus. Fusce a velit orci. Maecenas in mollis lacus.</p>
+                        </div>
                         <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle Menu</a>
-                        <div id="video-view">
 
-                        <div>
                     </div>
+
+                    <div id="video-view">
+
+                    <div>
                 </div>
             </div>
         </div>
@@ -109,6 +117,7 @@
     }
 
     function display_url(url){
+      $('#hide-div').empty();
       $("#video-view").empty();
       var foo = url;
       $("#video-view").append("<iframe width='560' height='315' src='" + foo +"' frameborder='0' allowfullscreen></iframe>")
@@ -121,6 +130,15 @@
         yolo(id);
         console.log('hello');
     });
+
+    $("#home-text").click(function(e){
+      $('#hide-div').empty();
+      $("#video-view").empty();
+      $("#hide-div").append("<h1>Top Level Chess</h1> \
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam quis facilisis urna, in viverra mi. Nunc finibus erat luctus metus mattis scelerisque. Ut purus nunc, tempor nec dictum at, sollicitudin sit amet erat. In hac habitasse platea dictumst. Pellentesque vel nisi eu nunc tempor venenatis sit amet sit amet neque. Duis tincidunt lobortis ex. Pellentesque eleifend nunc a ante blandit, eget gravida nulla accumsan. Phasellus quis libero a nisl interdum elementum. Vivamus tincidunt quam sed nulla porttitor sodales. Duis non velit porttitor, consequat risus eu, semper magna. Cras viverra nisl ut lacus vehicula, vel ullamcorper dolor tristique. Etiam dictum varius mauris a viverra.</p> \
+          <p>Vestibulum vel urna sed leo elementum vehicula ac a eros. Sed nibh mauris, porttitor nec ornare id, imperdiet nec nunc. Donec congue mattis pellentesque. Ut congue massa faucibus dictum suscipit. Maecenas lobortis pharetra odio. Mauris quis urna risus. Sed vehicula tellus ac blandit tempor. Nullam auctor velit in nulla pulvinar, sit amet mattis nunc dapibus. Integer et consequat mauris. Quisque consequat consequat lorem vitae blandit. Proin consectetur leo at turpis tempor, a sodales sapien maximus. Donec nec iaculis lectus. Nunc vitae malesuada arcu, ac faucibus lacus. Fusce a velit orci. Maecenas in mollis lacus.</p>");
+
+    })
 
 
     </script>
