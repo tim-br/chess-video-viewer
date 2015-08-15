@@ -166,11 +166,17 @@
       var $id = "my-" + $(this).attr("id");
       $("#hide-div").append("<h3 id='"+$id+"' class='active-semester' >Semester 1<h3><h3>Semester 2</h3><h3>Semester 3</h3>");
       $(".active-semester").on("click", function(e){
-        console.log("does nothing yet");
-        $id = $(this).attr("id");
-
+        var $id = $(this).attr("id");
+        console.log($id);
+        append_videos($id, $(this).html());
       });
     });
+
+    function append_videos(id, semester){
+      if(id === "my-beginner" && semester === "Semester 1"){
+        console.log("yolo");
+      }
+    }
 
 
 
