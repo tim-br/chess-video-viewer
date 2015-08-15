@@ -14,6 +14,13 @@ def new_video(title, url, week_number, semester_number, is_beginner, is_advanced
   Video.create(title: title, url: url, week_number: week_number, semester_number: semester_number, is_beginner: is_beginner, is_advanced: is_advanced)
 end
 
+def all_videos_for_semester(level, semester)
+  if level == 1 && semester == 1
+    Video.where(is_beginner: true)
+  elsif level == 2 && semester ==1
+    Video.where(is_advanced: true)
+  end
+end
 # Homepage (Root path)
 get '/' do
   erb :login
@@ -43,6 +50,13 @@ get '/videos/:id/url' do
   content_type :json
   get_video_url(params[:id])
 end
+
+get '/videos/:level/:semester_number' do
+  content_type :json
+  all_videos_for_semester(params[:level].to_i, params[:semester_number].to_i).to_json
+end
+
+
 
 get '/videos/:id/view' do
   "yolo"

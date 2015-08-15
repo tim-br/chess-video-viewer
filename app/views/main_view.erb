@@ -56,12 +56,6 @@
                     <div>Advanced</div>
                 </li>
 
-                <% @videos.each do |v| %>
-                <li class="video-links">
-                    <div id=<%=v.id%>><%= v.title %></div>
-                </li>
-                <% end %>
-
                 <li id="home-text">
                     <div> Home Page</div>
                 </li>
@@ -154,7 +148,7 @@
        var fun = res;
        var url = fun.responseText;
        display_url(url);
-     })
+     });
 
     }
 
@@ -182,18 +176,63 @@
 
     })
 
+    function capitalizeFirstLetter(string) {
+      return string.charAt(0).toUpperCase() + string.slice(1);
+    }
+
     $(".level").click(function(e){
       $('#hide-div').empty();
       $("#video-view").empty();
       var $id = "my-" + $(this).attr("id");
+      var title = $(this).attr("id");
+      var new_title = capitalizeFirstLetter(title);
+      $("#hide-div").append("<h3>"+new_title+"</h3>");
       $("#hide-div").append("<h3 id='"+$id+"' class='active-semester' >Semester 1<h3><h3>Semester 2</h3><h3>Semester 3</h3>");
 
       $(".active-semester").on("click", function(e){
         var $id = $(this).attr("id");
         console.log($id);
+        get_videos_ajax($id, 1);
         append_videos($id, $(this).html());
       });
     });
+
+    function get_videos_ajax(level, semester){
+      if(level === "my-beginner"){
+        var newLevel = 1;
+      }
+      if(level === "my-advanced"){
+        var newLevel = 2;
+      }
+      var mine = $.ajax({
+         dataType: "json",
+         url: "/videos/"+newLevel+"/1",
+         success: function(res) {
+             console.log(res);
+         },
+         fail: function(res){
+             console.log(res);
+         }
+     });
+
+     mine.always(function(res){
+       var fun = res;
+       $("#video-view").empty();
+       for(i = 0; i <= fun.length; i++){
+         putURL(fun[i]);
+       }
+
+     });
+    }
+
+    function putURL(element){
+      var foo = element.url;
+      var title = element.title;
+      $("#video-view").append("<h4>"+title+"</h4><br><br>")
+      $("#video-view").append("<iframe width='560' height='315' src='" + foo +"' frameborder='0' allowfullscreen></iframe>")
+
+    }
+
 
     function append_videos(id, semester){
       if(id === "my-beginner" && semester === "Semester 1"){
