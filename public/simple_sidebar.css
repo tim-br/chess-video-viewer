@@ -38,10 +38,20 @@
 }
 
 #page-content-wrapper {
-    width: 100%;
-    position: absolute;
-    padding: 15px;
+    width: 85%;
+    position: relative;
+    padding: 100px;
+
 }
+
+.main-view-class{
+  justify-content:center !important;
+}
+
+#logo-imag{
+  justify-content:center !important;
+}
+
 
 #wrapper.toggled #page-content-wrapper {
     position: absolute;
