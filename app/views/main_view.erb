@@ -49,11 +49,11 @@
                     </a>
                 </li>
 
-                <li id="beginner">
+                <li id="beginner" class="level">
                     <div>Beginner</div>
                 </li>
 
-                <li id="advanced">
+                <li id="advanced" class="level">
                     <div>Advanced</div>
                 </li>
 
@@ -159,7 +159,7 @@
 
     })
 
-    $("#beginner").click(function(e){
+    $(".level").click(function(e){
       $('#hide-div').empty();
       $("#video-view").empty();
       $("#hide-div").append("<h3 id='sem1'>Semester 1<h3><h3>Semester 2</h3><h3>Semester 3</h3>");
