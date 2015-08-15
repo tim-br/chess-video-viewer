@@ -16,7 +16,6 @@
 
     <!-- Custom CSS -->
     <link href="simple_sidebar.css" rel="stylesheet">
-    <link href="application.css" rel="stylesheet">
 
 
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
@@ -108,6 +107,8 @@
 
     <!-- Menu Toggle Script -->
     <script>
+
+
     $("#menu-toggle").click(function(e) {
         e.preventDefault();
         $("#wrapper").toggleClass("toggled");
@@ -162,12 +163,15 @@
     $(".level").click(function(e){
       $('#hide-div').empty();
       $("#video-view").empty();
-      $("#hide-div").append("<h3 id='sem1'>Semester 1<h3><h3>Semester 2</h3><h3>Semester 3</h3>");
-    })
+      var $id = "my-" + $(this).attr("id");
+      $("#hide-div").append("<h3 id='"+$id+"' class='active-semester' >Semester 1<h3><h3>Semester 2</h3><h3>Semester 3</h3>");
+      $(".active-semester").on("click", function(e){
+        console.log("does nothing yet");
+        $id = $(this).attr("id");
 
-    $("#sem1").click(function(e){
+      });
+    });
 
-    })
 
 
     </script>

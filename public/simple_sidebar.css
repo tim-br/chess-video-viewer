@@ -6,7 +6,7 @@
 
 /* Toggle Styles */
 
-#sem1{
+.active-semester{
   cursor:pointer;
   color:blue;
   text-decoration:underline;

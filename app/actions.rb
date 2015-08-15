@@ -2,6 +2,8 @@ def get_all_videos
   Video.all
 end
 
+
+
 def get_video_url(id)
   Video.find(id).url
 end
