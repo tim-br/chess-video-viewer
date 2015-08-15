@@ -2,28 +2,35 @@ def get_all_videos
   Video.all
 end
 
-
+def current_user
+  session[:user]
+end
 
 def get_video_url(id)
   Video.find(id).url
 end
 
-def new_video(title, url)
-  Video.create(title: title, url: url)
+def new_video(title, url, week_number, semester_number, is_beginner, is_advanced)
+  Video.create(title: title, url: url, week_number: week_number, semester_number: semester_number, is_beginner: is_beginner, is_advanced: is_advanced)
 end
 
 # Homepage (Root path)
 get '/' do
-  erb :index
+  erb :login
 end
 
 get '/yolo' do
   "yolo"
 end
 
-get '/mainview' do
-  @videos = get_all_videos
-  erb :main_view
+get '/main_view' do
+  if current_user
+    @user = session[:user]
+    @videos = Video.all
+    erb :'main_view'
+  else
+    redirect '/permission_denied'
+  end
 end
 
 get '/videos' do
@@ -44,9 +51,36 @@ end
 post '/videos' do
   @title = params[:title]
   @url = params[:url]
-  new_video(@title, @url)
+  @week_number = params[:week_number]
+  @semester_number = params[:semester_number]
+  @is_beginner = params[:is_beginner]
+  @is_advanced = params[:as_advanced]
+  new_video(@title, @url, @week_number, @semester_number, @is_beginner, @is_advanced)
 end
 
-get '/login' do
-  erb :login
+post '/verify_login' do
+  @user = User.find_by email: params[:email]
+  if @user && @user.authenticate(params[:password])
+    session[:user] = @user
+    if(@user.is_admin?)
+      redirect '/admin_controller'
+    else
+      redirect '/main_view'
+    end
+  else
+    redirect '/authentification_failed'
+  end
+end
+
+get '/authentification_failed' do
+  "ERROR WRONG PASSWORD"
+end
+
+get '/admin_controller' do
+  @user = current_user
+  if @user.is_admin?
+    "WELCOME ADMIN"
+  else
+    redirect '/authentification_failed'
+  end
 end

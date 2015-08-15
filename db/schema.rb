@@ -11,15 +11,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150813175111) do
+ActiveRecord::Schema.define(version: 20150815110110) do
+
+  create_table "users", force: :cascade do |t|
+    t.string   "full_name"
+    t.boolean  "is_admin"
+    t.string   "email"
+    t.string   "password"
+    t.string   "password_digest"
+    t.string   "string"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
 
   create_table "videos", force: :cascade do |t|
     t.string   "title"
     t.string   "author"
     t.string   "url"
     t.integer  "week_number"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+    t.boolean  "is_beginner",     default: false
+    t.boolean  "is_advanced",     default: false
+    t.integer  "semester_number"
   end
 
 end
