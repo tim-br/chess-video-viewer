@@ -56,12 +56,6 @@
                     <div>Advanced</div>
                 </li>
 
-                <% @videos.each do |v| %>
-                <li class="video-links">
-                    <div id=<%=v.id%>><%= v.title %></div>
-                </li>
-                <% end %>
-
                 <li id="home-text">
                     <div> Home Page</div>
                 </li>
@@ -181,9 +175,15 @@
     });
 
     function get_videos_ajax(level, semester){
+      if(level === "my-beginner"){
+        var newLevel = 1;
+      }
+      if(level === "my-advanced"){
+        var newLevel = 2;
+      }
       var mine = $.ajax({
          dataType: "json",
-         url: "/videos/1/1",
+         url: "/videos/"+newLevel+"/1",
          success: function(res) {
              console.log(res);
          },
