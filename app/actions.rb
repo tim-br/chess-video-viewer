@@ -93,7 +93,7 @@ end
 get '/admin_controller' do
   @user = current_user
   if @user.is_admin?
-    "WELCOME ADMIN"
+    erb :admin_controller
   else
     redirect '/authentification_failed'
   end
