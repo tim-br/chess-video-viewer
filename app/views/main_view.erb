@@ -77,16 +77,17 @@
                 <div class="row">
                     <div class="center-block">
                         <div id="hide-div">
-                        <h1 class="launch-div">Top Level Chess</h1>
+                        <!-- <h1 class="launch-div">Top Level Chess</h1> -->
                         <br>
                         <div class="center-block">
                           <img  class="launch-div" src="top-level-chess-logo-xsmall.gif" alt="Mountain View">
+                          <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle Menu</a>
                         </div>
 
                         </div>
                         <br>
                         <br>
-                        <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle Menu</a>
+
 
                     </div>
 
@@ -107,6 +108,27 @@
 
     <!-- Menu Toggle Script -->
     <script>
+
+
+
+    jQuery.fn.center = function () {
+        this.css("position","relative");
+        this.css("top", Math.max(0, (($(window).height() - $(this).outerHeight()) / 20) +
+                                                    $(window).scrollTop()) + "px");
+        this.css("left", Math.max(0, (($(window).width() - $(this).outerWidth()) / 8) +
+                                                    $(window).scrollLeft()) + "px");
+        return this;
+    }
+
+    jQuery.fn.hardcenter = function () {
+        this.css("position","relative");
+        this.css("top", Math.max(0, (($(window).height() - $(this).outerHeight()) / 15) +
+                                                    $(window).scrollTop()) + "px");
+        this.css("left", Math.max(0, (($(window).width() - $(this).outerWidth()) / 2) +
+                                                    $(window).scrollLeft()) + "px");
+        return this;
+    }
+
 
 
     $("#menu-toggle").click(function(e) {
@@ -165,6 +187,7 @@
       $("#video-view").empty();
       var $id = "my-" + $(this).attr("id");
       $("#hide-div").append("<h3 id='"+$id+"' class='active-semester' >Semester 1<h3><h3>Semester 2</h3><h3>Semester 3</h3>");
+
       $(".active-semester").on("click", function(e){
         var $id = $(this).attr("id");
         console.log($id);
