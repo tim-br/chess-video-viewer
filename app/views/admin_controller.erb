@@ -75,6 +75,21 @@
                         <br>
                         <div class="center-block">
                             As admin, you can use these forms to create, update and delete lessons.
+                            <br>
+                            <br>
+                            <h3 class='active-semester' id='add'> Add New Video/Lesson </h3>
+                            <h3 class='active-semester' id='search'> Search/Modify Videos/ Lessons</h3>
+                            <h4>Week Number</h4>
+                            <select name="cars">
+
+                            <% (1..15).each do |t| %>
+                              <option value="<%= t %>"><%= t%></option>
+                            <% end %>
+                            </select>
+
+                            <div id="form">
+
+                            </div>
 
                         </div>
 
@@ -96,6 +111,8 @@
 
     </div>
   </div>
+  <script src="/javascript/admin.js">
 
+  </script>
 </body>
 </html>
