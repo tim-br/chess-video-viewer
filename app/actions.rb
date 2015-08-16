@@ -62,13 +62,13 @@ get '/videos/:id/view' do
   "yolo"
 end
 
-post '/videos' do
+post '/videos/' do
   @title = params[:title]
   @url = params[:url]
   @week_number = params[:week_number]
   @semester_number = params[:semester_number]
   @is_beginner = params[:is_beginner]
-  @is_advanced = params[:as_advanced]
+  @is_advanced = params[:is_advanced]
   new_video(@title, @url, @week_number, @semester_number, @is_beginner, @is_advanced)
 end
 
