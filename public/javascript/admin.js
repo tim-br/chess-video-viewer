@@ -2,9 +2,38 @@ $('#add').on("click", function(){
   addInsertForm();
 });
 
-$('#search').on("click", function(){
-  alert("yolo");
+$('#delete').on("click", function(){
+  $("#form").empty();
+  $("#delete-div").empty();
+  addAllVideos();
 });
+
+function addAllVideos(){
+  $("#delete-div").empty();
+  $.ajax({
+         type: "GET",
+         url: "/videos",
+         success: function(data)
+         {
+             for(i = 0; i < data.length; i++){
+               $("#delete-div").append("<div id="+data[i].id+">")
+               $("#delete-div").append("<p><b> Title: "+data[i].title+"</b></p>");
+               $("#delete-div").append("<p> URL: "+data[i].url+"</p>");
+               $("#delete-div").append("<p> is beginner: "+data[i].is_beginner+"</p>");
+               $("#delete-div").append("<p> is advanced: "+data[i].is_advanced+"</p>");
+               $("#delete-div").append("<p> Week Number: "+data[i].week_number+"</p>");
+               $("#delete-div").append("<p> Semester Number: "+data[i].semester_number+"</p>");
+
+               $("#delete-div").append("<button> Delete This Video</button>");
+
+               $("#delete-div").append("</div>");
+               $("#delete-div").append("<hr>");
+             }
+             //alert(data); // show response from the php script.
+         }
+
+    });
+}
 
 function addInsertForm(){
   $("#form").empty();
