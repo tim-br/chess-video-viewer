@@ -1,3 +1,10 @@
+class String
+  def is_integer?
+    self.to_i.to_s == self
+  end
+end
+
+
 def get_all_videos
   Video.all
 end
@@ -21,6 +28,15 @@ def all_videos_for_semester(level, semester)
     Video.where(is_advanced: true)
   end
 end
+
+def search_videos(options = {})
+  key = options.first[0].to_s
+  value = options.first[1]
+  value = value.to_i if value.is_integer?
+  @result = Video.where(key => value)
+  return @result
+end
+
 # Homepage (Root path)
 get '/' do
   erb :login
@@ -97,4 +113,20 @@ get '/admin_controller' do
   else
     redirect '/authentification_failed'
   end
+end
+
+get '/videos/search/' do
+  content_type :json
+
+  @week_number = params[:week_number]
+  @title = params[:title]
+  @url = params[:url]
+  @is_beginner = params[:is_beginner]
+  @is_advanced = params[:is_advanced]
+  @id = params[:id]
+  @semester_number = params[:semester_number]
+
+  @options = {semester_number: @semester_number, week_number: @week_number, title: @title, url: @url, is_beginner: @is_beginner, is_advanced: @is_advanced, id: @id}
+  @options.delete_if { |key, value| value.nil? }
+  search_videos(@options).to_json
 end
