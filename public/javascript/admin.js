@@ -16,7 +16,7 @@ function addAllVideos(){
          success: function(data)
          {
              for(i = 0; i < data.length; i++){
-               $("#delete-div").append("<div id="+data[i].id+">")
+               $("#delete-div").append("<div>")
                $("#delete-div").append("<p><b> Title: "+data[i].title+"</b></p>");
                $("#delete-div").append("<p> URL: "+data[i].url+"</p>");
                $("#delete-div").append("<p> is beginner: "+data[i].is_beginner+"</p>");
@@ -24,11 +24,23 @@ function addAllVideos(){
                $("#delete-div").append("<p> Week Number: "+data[i].week_number+"</p>");
                $("#delete-div").append("<p> Semester Number: "+data[i].semester_number+"</p>");
 
-               $("#delete-div").append("<button> Delete This Video</button>");
+               $("#delete-div").append("<button class='delete-vid' id="+data[i].id+"> Delete This Video</button>");
 
                $("#delete-div").append("</div>");
                $("#delete-div").append("<hr>");
              }
+
+             $(".delete-vid").on("click", function(){
+               $id = $(this).attr("id");
+               this_url = "/videos/"+$id;
+               $.ajax({
+                 url: this_url,
+                type: 'DELETE',
+                success: function(result) {
+                  alert("video was deleted successfully (please refresh page)");
+                }
+                });
+             })
              //alert(data); // show response from the php script.
          }
 

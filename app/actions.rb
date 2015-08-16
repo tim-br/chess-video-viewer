@@ -37,6 +37,10 @@ def search_videos(options = {})
   return @result
 end
 
+def delete_vid(id)
+  Video.find(id).destroy
+end
+
 # Homepage (Root path)
 get '/' do
   erb :login
@@ -65,6 +69,10 @@ end
 get '/videos/:id/url' do
   content_type :json
   get_video_url(params[:id])
+end
+
+delete '/videos/:id' do
+  delete_vid(params[:id])
 end
 
 get '/videos/:level/:semester_number' do
