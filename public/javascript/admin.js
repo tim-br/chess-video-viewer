@@ -43,7 +43,6 @@ function addInsertForm(){
 
       // this is the id of the form
   $("#my-submit").click(function() {
-      alert("yolo");
       var url = "/videos/"; // the script where you handle the form input.
       var fun =  $("#newvideoform").serialize();
       console.log(fun);
@@ -53,7 +52,9 @@ function addInsertForm(){
              data: $("#newvideoform").serialize(), // serializes the form's elements.
              success: function(data)
              {
-                 alert(data); // show response from the php script.
+                 $('#form').empty();
+                 alert("new video added")
+                 //alert(data); // show response from the php script.
              }
 
            });
