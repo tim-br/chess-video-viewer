@@ -1,0 +1,20 @@
+ *{border:1px solid red;}
+
+img {
+  margin: 0 auto;
+  display: inherit;
+}
+
+.center-block {
+  display: block;
+  margin-right: auto;
+  margin-left: 0 !important; */
+  max-width: 700px;
+  width: 70%;
+}
+
+#menu-toggle {
+  position: relative !important;
+  margin-top: 10px !important;
+  margin-left: 0 !important;
+}
