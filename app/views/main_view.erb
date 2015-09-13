@@ -108,11 +108,6 @@
     <!-- Menu Toggle Script -->
     <script>
 
-    $("#menu-toggle").click(function(e) {
-        e.preventDefault();
-        $("#wrapper").toggleClass("toggled");
-    });
-
 
     function yolo(video_id){
 
@@ -153,15 +148,19 @@
     $("#home-text").click(function(e){
       $('#hide-div').empty();
       $("#video-view").empty();
-      $("#hide-div").append('<br> \n                        <div class="center-block">  \n                          <img  class="launch-div" src="top-level-chess-logo-xsmall.gif " alt="Mountain View"> \n                          <br> \n                          <p>We are very excited to start a new chess program at Town  Centre Montessori. Top Level Chess is run by renowned     International Master (IM) Artiom Samsonkin, an experienced chess teacher, and one of Canada\'s Top Ten rated players. For the first time, your chess program has taken full advantage of the latest in technology, including a dedicated website with chess videos that reinforce the lessons learned in class. Every class uses a smart board and/or video projector to make your chess education more dynamic and fun! And for the first time, intermediate/advanced students will have their tournaments rated.</p>\n                          <p>  We are pleased to have you join us for a year of chess that will bring out the champion in you. Our goal at Top Level Chess is to give you the latest chess tools to reach your personal best. When you are reaching your personal best you can\'t lose! We look forward to our inaugural year at Town Centre Montessori.</p>\n                          <p>If you questions about our program please e-mail us at toplevelchess64@gmail.com</p>\n\n                          <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle Menu</a>\n                        </div>');
+      $("#hide-div").append('<br><div class="center-block"> <img  class="launch-div" src="top-level-chess-logo-xsmall.gif " alt="Mountain View"> <br> <p>We are very excited to start a new chess program at Town  Centre Montessori. Top Level Chess is run by renowned     International Master (IM) Artiom Samsonkin, an experienced chess teacher, and one of Canada\'s Top Ten rated players. For the first time, your chess program has taken full advantage of the latest in technology, including a dedicated website with chess videos that reinforce the lessons learned in class. Every class uses a smart board and/or video projector to make your chess education more dynamic and fun! And for the first time, intermediate/advanced students will have their tournaments rated.</p>                          <p>  We are pleased to have you join us for a year of chess that will bring out the champion in you. Our goal at Top Level Chess is to give you the latest chess tools to reach your personal best. When you are reaching your personal best you can\'t lose! We look forward to our inaugural year at Town Centre Montessori.</p>                       <p>If you questions about our program please e-mail us at toplevelchess64@gmail.com</p>                          <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle Menu</a>                        </div>');
 
-    })
+        $("#menu-toggle").click(function(e) {
+          e.preventDefault();
+         $("#wrapper").toggleClass("toggled");
+        });
+    });
 
     $("#beginner").click(function(e){
       $('#hide-div').empty();
       $("#video-view").empty();
       $("#hide-div").append("<h3>Beginner</h3>");
-      $("#hide-div").append("<br><h3 class='active-semester' >Semester 1<h3><h3>Semester 2</h3><h3>Semester 3</h3>");
+      $("#hide-div").append("<br><h3 class='active-semester btn btn-lg btn-primary btn-block' >Semester 1<h3><h3>Semester 2 (Upcoming)</h3><h3>Semester 3 (Upcoming)</h3>");
 
       $(".active-semester").on("click", function(e){
         get_videos_ajax("my-beginner", 1);
@@ -173,7 +172,7 @@
       $('#hide-div').empty();
       $("#video-view").empty();
       $("#hide-div").append("<h3>Advanced</h3>");
-      $("#hide-div").append("<br><h3 class='active-semester' >Semester 1<h3><h3>Semester 2</h3><h3>Semester 3</h3>");
+      $("#hide-div").append("<br><h3 class='active-semester btn btn-lg btn-primary btn-block' >Semester 1<h3><h3>Semester 2 (Upcoming)</h3><h3>Semester 3 (Upcoming)</h3>");
 
       $(".active-semester").on("click", function(e){
         get_videos_ajax("my-advanced", 1);
@@ -244,6 +243,11 @@
         console.log("yolo");
       }
     }
+
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+    });
 
     </script>
 
