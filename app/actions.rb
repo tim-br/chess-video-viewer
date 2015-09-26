@@ -97,6 +97,10 @@ post '/videos/' do
 end
 
 post '/verify_login' do
+  puts "the email is"
+  puts params[:email]
+  puts "the pass is "
+  puts params[:password]
   @user = User.find_by email: params[:email]
   if @user && @user.authenticate(params[:password])
     session[:user] = @user

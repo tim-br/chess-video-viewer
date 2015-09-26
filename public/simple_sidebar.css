@@ -1,3 +1,4 @@
+
 /*!
  * Start Bootstrap - Simple Sidebar HTML Template (http://startbootstrap.com)
  * Code licensed under the Apache License v2.0.
@@ -5,12 +6,6 @@
  */
 
 /* Toggle Styles */
-
-/*.active-semester{
-  cursor:pointer;
-  color:blue;
-  text-decoration:underline;
-}*/
 
 #wrapper {
     padding-left: 0;
@@ -44,30 +39,14 @@
 }
 
 #page-content-wrapper {
-    width: 85%;
-    position: relative;
-    padding: 100px;
-
+    width: 100%;
+    position: absolute;
+    padding: 15px;
 }
-
-.main-view-class{
-  justify-content:center !important;
-}
-
-#logo-imag{
-  justify-content:center !important;
-}
-
 
 #wrapper.toggled #page-content-wrapper {
     position: absolute;
     margin-right: -250px;
-}
-
-#menu-toggle{
-  position: absolute;
-
-  margin-left: 175px;
 }
 
 /* Sidebar Styles */
@@ -86,20 +65,20 @@
     line-height: 40px;
 }
 
-.sidebar-nav li div {
+.sidebar-nav li a {
     display: block;
     text-decoration: none;
     color: #999999;
 }
 
-.sidebar-nav li div:hover {
+.sidebar-nav li a:hover {
     text-decoration: none;
     color: #fff;
     background: rgba(255,255,255,0.2);
 }
 
-.sidebar-nav li div:active,
-.sidebar-nav li div:focus {
+.sidebar-nav li a:active,
+.sidebar-nav li a:focus {
     text-decoration: none;
 }
 
