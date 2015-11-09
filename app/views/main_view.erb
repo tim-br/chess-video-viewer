@@ -117,6 +117,16 @@
     <!-- Menu Toggle Script -->
     <script>
 
+    //this is an array in case I want to have multiple videos 
+    //displaying at the same time
+    var arr_of_displayed_id = [];// this doesn't do anything now
+
+    //not used right now
+    var empty_vids = function(){
+      var to_remove = "#" + arr_of_displayed_id[0];
+      $(to_remove).remove();
+      arr_of_displayed_id = [];
+    }
 
     function yolo(video_id){
 
@@ -142,8 +152,7 @@
     function display_url(url){
       $('#hide-div').empty();
       $("#video-view").empty();
-      var foo = url;
-      $("#video-view").append("<iframe width='560' height='315' src='" + foo +"' frameborder='0' allowfullscreen></iframe>")
+      $("#video-view").append("<iframe width='560' height='315' src='" + url +"' frameborder='0' allowfullscreen></iframe>")
     }
 
     $(".video-links").click(function(e) {
@@ -192,7 +201,7 @@
     function capitalizeFirstLetter(string) {
       return string.charAt(0).toUpperCase() + string.slice(1);
     }
-
+    //old function I'm not using it anymore
     // $(".level").click(function(e){
     //   $('#hide-div').empty();
     //   $("#video-view").empty();
@@ -229,20 +238,47 @@
      });
 
      mine.always(function(res){
-       var fun = res;
-       $("#video-view").empty();
-       for(i = 0; i <= fun.length; i++){
-         putURL(fun[i]);
+       var result = res;
+       $("#video-view").empty(); /// this removes everything from the view
+       // this adds the titles of the vids to the view
+       for(i = 0; i < result.length; i++){
+         displayTitle(result[i]);
        }
 
      });
     }
 
-    function putURL(element){
-      var foo = element.url;
+    var displayTitle = function (video_object){
+      var video_title = video_object.title;
+      console.log(video_object.title);
+      var video_id = "vid_id" + video_object.id;
+      console.log(video_id);
+      $("#video-view").append('<span id=\"' + video_id + '\"><a><h3>'+video_title+'</h3></a></span><br>');
+      var id_string = "#" + video_id
+      $(id_string).click(function(e){
+        console.log("hello word");
+        displayVideo(video_object.url, id_string);
+      }); 
+    }
+
+    var displayVideo = function (url, id){
+
+      //empty_vids();
+
+      var new_id = id.substring(1) + "uni"; // this is just for there to be a unique id I can use
+      $("#" + new_id).remove();// this removes the video so it doesn't appear twice
+
+      $(id).append("<span id=\'"+ new_id +"\'><br><iframe width='560' height='315' src='" + url +"' frameborder='0' allowfullscreen></iframe><br></span>");
+
+      arr_of_displayed_id.push(new_id);// this doesn't really do anything?
+
+    }
+
+    function putVideo(element){
+      var url = element.url;
       var title = element.title;
       $("#video-view").append("<h4>"+title+"</h4><br><br>")
-      $("#video-view").append("<iframe width='560' height='315' src='" + foo +"' frameborder='0' allowfullscreen></iframe>")
+      $("#video-view").append("<iframe width='560' height='315' src='" + url +"' frameborder='0' allowfullscreen></iframe>")
 
     }
 
