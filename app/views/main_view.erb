@@ -277,7 +277,7 @@
       var new_id = id.substring(1) + "uni"; // this is just for there to be a unique id I can use
       $("#" + new_id).remove();// this removes the video so it doesn't appear twice
 
-      $(id).append("<span id=\'"+ new_id +"\'><br><iframe width='560' height='315' src='" + url +"' frameborder='0' allowfullscreen></iframe><br></span>");
+      $(id).append("<span id=\'"+ new_id +"\'><br><iframe width='560' height='315' src='" + url +"' frameborder='1' allowfullscreen></iframe><br></span>");
 
       arr_of_displayed_id.push(new_id);// this doesn't really do anything?
     }
