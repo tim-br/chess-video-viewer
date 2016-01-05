@@ -178,7 +178,7 @@
       $('#hide-div').empty();
       $("#video-view").empty();
       $("#hide-div").append("<h3>Beginner</h3>");
-      $("#hide-div").append("<br><h3 class='active-semester btn btn-lg btn-primary btn-block' >Semester 1<h3><h3 class='semester-two btn btn-lg btn-primary btn-block'>Semester 2 (Upcoming)</h3><h3>Semester 3 (Upcoming)</h3>");
+      $("#hide-div").append("<br><h3 class='active-semester btn btn-lg btn-primary btn-block' >Semester 1<br><h3 class='semester-two btn btn-lg btn-primary btn-block'>Semester 2 </h3><h3>Semester 3 (Upcoming)</h3>");
 
       $(".active-semester").on("click", function(e){
         get_videos_ajax("my-beginner", 1);
@@ -194,10 +194,15 @@
       $('#hide-div').empty();
       $("#video-view").empty();
       $("#hide-div").append("<h3>Advanced</h3>");
-      $("#hide-div").append("<br><h3 class='active-semester btn btn-lg btn-primary btn-block' >Semester 1<h3><h3>Semester 2 (Upcoming)</h3><h3>Semester 3 (Upcoming)</h3>");
+      $("#hide-div").append("<br><h3 class='active-semester btn btn-lg btn-primary btn-block' >Semester 1<br><h3 class='semester-two btn btn-lg btn-primary btn-block'>Semester 2 </h3><h3>Semester 3 (Upcoming)</h3>");
 
       $(".active-semester").on("click", function(e){
         get_videos_ajax("my-advanced", 1);
+        //append_videos($id, $(this).html());
+      });
+
+      $(".semester-two").on("click", function(e){
+        get_videos_ajax("my-advanced", 2);
         //append_videos($id, $(this).html());
       });
     })

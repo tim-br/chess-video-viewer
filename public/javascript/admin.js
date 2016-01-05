@@ -1,14 +1,16 @@
 $('#add').on("click", function(){
-  addInsertForm();
+  $("#form").empty();
+  $("#delete-div").empty();
+  displayInsertForm();
 });
 
 $('#delete').on("click", function(){
   $("#form").empty();
   $("#delete-div").empty();
-  addAllVideos();
+  dumpAllVideos();
 });
 
-function addAllVideos(){
+function dumpAllVideos(){
   $("#delete-div").empty();
   $.ajax({
          type: "GET",
@@ -47,7 +49,7 @@ function addAllVideos(){
     });
 }
 
-function addInsertForm(){
+function displayInsertForm(){
   $("#form").empty();
   $("#form").append("<br>");
 
