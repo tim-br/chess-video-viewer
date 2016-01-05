@@ -4,7 +4,6 @@ class String
   end
 end
 
-
 def get_all_videos
   Video.all
 end
@@ -19,14 +18,6 @@ end
 
 def new_video(title, url, week_number, semester_number, is_beginner, is_advanced)
   Video.create(title: title, url: url, week_number: week_number, semester_number: semester_number, is_beginner: is_beginner, is_advanced: is_advanced)
-end
-
-def all_videos_for_semester(level, semester)
-  if level == 1 && semester == 1
-    Video.where(is_beginner: true).order("week_number")
-  elsif level == 2 && semester ==1
-    Video.where(is_advanced: true).order("week_number")
-  end
 end
 
 def search_videos(options = {})
@@ -44,10 +35,6 @@ end
 # Homepage (Root path)
 get '/' do
   erb :login
-end
-
-get '/yolo' do
-  "yolo"
 end
 
 get '/main_view' do
@@ -79,8 +66,6 @@ get '/videos/:level/:semester_number' do
   content_type :json
   all_videos_for_semester(params[:level].to_i, params[:semester_number].to_i).to_json
 end
-
-
 
 get '/videos/:id/view' do
   "yolo"
