@@ -19,7 +19,12 @@ def get_video_url(id)
 end
 
 def new_video(title, url, week_number, semester_number, is_beginner, is_advanced)
-  Video.create(title: title, url: url, week_number: week_number, semester_number: semester_number, is_beginner: is_beginner, is_advanced: is_advanced)
+  Video.create(title: title,
+               url: url,
+               week_number: week_number,
+               semester_number: semester_number,
+               is_beginner: is_beginner,
+               is_advanced: is_advanced)
 end
 
 def search_videos(options = {})
