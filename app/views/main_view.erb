@@ -117,7 +117,7 @@
     <!-- Menu Toggle Script -->
     <script>
 
-    //this is an array in case I want to have multiple videos 
+    //this is an array in case I want to have multiple videos
     //displaying at the same time
     var arr_of_displayed_id = [];// this doesn't do anything now
 
@@ -178,10 +178,14 @@
       $('#hide-div').empty();
       $("#video-view").empty();
       $("#hide-div").append("<h3>Beginner</h3>");
-      $("#hide-div").append("<br><h3 class='active-semester btn btn-lg btn-primary btn-block' >Semester 1<h3><h3>Semester 2 (Upcoming)</h3><h3>Semester 3 (Upcoming)</h3>");
+      $("#hide-div").append("<br><h3 class='active-semester btn btn-lg btn-primary btn-block' >Semester 1<h3><h3 class='semester-two btn btn-lg btn-primary btn-block'>Semester 2 (Upcoming)</h3><h3>Semester 3 (Upcoming)</h3>");
 
       $(".active-semester").on("click", function(e){
         get_videos_ajax("my-beginner", 1);
+        //append_videos($id, $(this).html());
+      });
+      $(".semester-two").on("click", function(e){
+        get_videos_ajax("my-beginner", 2);
         //append_videos($id, $(this).html());
       });
     });
@@ -228,7 +232,7 @@
       }
       var mine = $.ajax({
          dataType: "json",
-         url: "/videos/"+newLevel+"/1",
+         url: "/videos/"+newLevel+"/" + semester,
          success: function(res) {
              console.log(res);
          },
@@ -258,7 +262,7 @@
       $(id_string).click(function(e){
         console.log("hello word");
         displayVideo(video_object.url, id_string);
-      }); 
+      });
     }
 
     var displayVideo = function (url, id){
@@ -271,7 +275,6 @@
       $(id).append("<span id=\'"+ new_id +"\'><br><iframe width='560' height='315' src='" + url +"' frameborder='0' allowfullscreen></iframe><br></span>");
 
       arr_of_displayed_id.push(new_id);// this doesn't really do anything?
-
     }
 
     function putVideo(element){
@@ -279,9 +282,7 @@
       var title = element.title;
       $("#video-view").append("<h4>"+title+"</h4><br><br>")
       $("#video-view").append("<iframe width='560' height='315' src='" + url +"' frameborder='0' allowfullscreen></iframe>")
-
     }
-
 
     function append_videos(id, semester){
       if(id === "my-beginner" && semester === "Semester 1"){

@@ -61,7 +61,7 @@ function addInsertForm(){
 
   $("#form").append(form);
   $("#form").append("<br><label for='semester_number'>Semester Number</label><select name='semester_number' form='newvideoform'> \
-                    <option value='1'>1</option></select>");
+                    <option value='1'>1</option><option value='2'>2</option></select>");
   $("#form").append("<br><label for='url'>URL</label> \
       <input type='text' name='url' id='url' value='url' form='newvideoform'><br>")
 
