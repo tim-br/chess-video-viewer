@@ -259,6 +259,9 @@
        for(i = 0; i < result.length; i++){
          displayTitle(result[i]);
        }
+       if(result.length == 0){
+         displayWarning()
+       }
 
      });
     }
@@ -274,6 +277,10 @@
         console.log("hello word");
         displayVideo(video_object.url, id_string);
       });
+    }
+
+    var displayWarning = function (){
+      $("#video-view").append('<span> There are no videos found for this semester :(</span>');
     }
 
     var displayVideo = function (url, id){
