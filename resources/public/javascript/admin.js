@@ -76,7 +76,8 @@ function displayInsertForm(){
   $("#form").append("<br><label for='is_advanced'>Advanced</label><select name='is_advanced' form='newvideoform'> \
                     <option value='false'>false</option><option value='true'>true</option></select>");
 
-
+  $("#form").append("<br><label for='is_intermediate'>Intermediate</label><select name='is_intermediate' form='newvideoform'> \
+                    <option value='false'>false</option><option value='true'>true</option></select>");
 
   $("#form").append("<br><input id='my-submit' type='submit'> \
       </form>")
