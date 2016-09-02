@@ -1,0 +1,102 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Simple Sidebar - Start Bootstrap Template</title>
+
+    <!-- Bootstrap Core CSS -->
+
+    <!-- Custom CSS -->
+    <link href="simple_sidebar.css" rel="stylesheet">
+
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+
+</head>
+
+<body>
+
+<div id="wrapper">
+
+    <!-- Sidebar -->
+    <div id="sidebar-wrapper">
+        <ul class="sidebar-nav">
+            <li class="sidebar-brand">
+                <a href="#">
+                    Top Level Chess
+                </a>
+            </li>
+
+            <li id="main-view">
+                <div><a href="/main_view">Main View/Page</a></div>
+            </li>
+        </ul>
+    </div>
+    <!-- /#sidebar-wrapper -->
+
+    <!-- Page Content -->
+
+    <div id="page-content-wrapper">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="center-block">
+                    <div id="hide-div">
+                        <!-- <h1 class="launch-div">Top Level Chess</h1> -->
+                        <br>
+                        <div class="center-block">
+                            As admin, you can use these forms to create, update and delete lessons.
+                            <br>
+                            <br>
+                            <h3 class='active-semester btn btn-lg btn-primary btn-block' id='add'> Add New Video/Lesson </h3>
+                            <h3 class='active-semester btn btn-lg btn-primary btn-block' id='delete'> Delete Lessons/Videos</h3>
+
+                            <div id="form">
+
+                            </div>
+
+                            <div id="delete-div">
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <br>
+                    <br>
+                </div>
+                <div id="video-view">
+                    <div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /#page-content-wrapper -->
+    </div>
+</div>
+<script>
+  var csrf_token= '{{csrf-token}}'
+</script>
+<script src="/javascript/admin.js">
+
+</script>
+</body>
+</html>

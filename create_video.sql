@@ -1,0 +1,13 @@
+CREATE TABLE videos (
+  id SERIAL PRIMARY KEY,
+  title VARCHAR,
+  author VARCHAR,
+  url VARCHAR,
+  week_number INTEGER,
+  created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  is_beginner BOOLEAN DEFAULT FALSE,
+  is_advanced BOOLEAN DEFAULT FALSE,
+  is_intermediate BOOLEAN DEFAULT FALSE,
+  semester_number INTEGER  
+);

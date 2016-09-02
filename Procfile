@@ -1,1 +1,1 @@
-web: bundle exec puma -p $PORT -e $RACK_ENV -t 0:5
+web: java $JVM_OPTS -jar target/shouter-standalone.jar
