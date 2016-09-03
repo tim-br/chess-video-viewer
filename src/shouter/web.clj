@@ -21,7 +21,7 @@
   (wrap-reload
     (session/wrap-session
       (wrap-restful-format
-        (wrap-defaults routes site-defaults)))))
+        (wrap-defaults routes (assoc site-defaults :allow-from "http://tcmtoplevelchess.ca"))))))
 
 (defn start [port]
   (ring/run-jetty #'application {:port  port
