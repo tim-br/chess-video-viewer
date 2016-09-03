@@ -21,7 +21,7 @@
   (wrap-reload
     (session/wrap-session
       (wrap-restful-format
-        (wrap-defaults routes (dissoc site-defaults :allow-from))))))
+        (wrap-defaults routes (update-in site-defaults [:security] dissoc :frame-options))))))
 
 (defn start [port]
   (ring/run-jetty #'application {:port  port
