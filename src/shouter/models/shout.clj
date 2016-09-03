@@ -1,6 +1,7 @@
 (ns shouter.models.shout
   (:require [clojure.java.jdbc :as sql]
-            [crypto.password.bcrypt :as password]))
+            [crypto.password.bcrypt :as password])
+  (:import (java.sql BatchUpdateException)))
 
 (def spec (or (System/getenv "DATABASE_URL")
               "postgresql://localhost:5432/shouter"))
@@ -55,6 +56,21 @@
                 :is_beginner     (boolean (Boolean/valueOf is_beginner))
                 :is_advanced     (boolean (Boolean/valueOf is_advanced))
                 :is_intermediate     (boolean (Boolean/valueOf is_advanced))}))
+
+(defn delete-video!
+  [id]
+  (try
+    (sql/delete! spec
+                 :videos
+                 ["id = ?" (Integer/parseInt id)])
+    (catch BatchUpdateException e
+      (println (str (.getNextException e)))
+      (str "error caught"))))
+
+(defn get-all-videos
+  []
+  (sql/query spec
+             ["SELECT * FROM videos"]))
 
 (defn all-videos-in-semester
   [{:keys [level semester]}]

@@ -1,6 +1,6 @@
 (ns shouter.controllers.shouts
   (:require [cheshire.core :refer [generate-string]]
-            [compojure.core :refer [defroutes GET POST]]
+            [compojure.core :refer [defroutes GET POST DELETE]]
             [clojure.string :as str]
             [ring.util.response :as ring]
             [ring.middleware.anti-forgery :refer [*anti-forgery-token*]]
@@ -126,8 +126,12 @@
   (GET "/test-session" request (test-session request))
   (GET "/main_view.html" request (main-view request))
   (GET "/admin_controller.html" request (admin-controller request))
+  (DELETE "/videos/:id" [id]
+    (model/delete-video! id))
   (GET "/videos/:level/:semester" request
     (all-videos-for-semester request))
+  (GET "/videos" request
+    (model/get-all-videos))
   (POST "/videos/" request
     (add-video request))
   (POST "/" request (login request) #_(create shout)))

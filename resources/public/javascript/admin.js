@@ -38,6 +38,9 @@ function dumpAllVideos(){
                $.ajax({
                  url: this_url,
                 type: 'DELETE',
+                headers: {
+                  "X-CSRF-Token": csrf_token
+                },
                 success: function(result) {
                   alert("video was deleted successfully (please refresh page)");
                 }
