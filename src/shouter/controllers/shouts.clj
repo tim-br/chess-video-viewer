@@ -118,12 +118,9 @@
 
 (defroutes routes
   (GET  "/" [] (index))
-  (GET "/well" [] (do
-                    (println "yoko ono")
-                    (str "yo")))
   (POST "/verify_login" [email name] (println email))
   (GET "/verify_login" [] (str "<h1>holy tsrat </h1>"))
-  (GET "/test-session" request (test-session request))
+  #_(GET "/test-session" request (test-session request))
   (GET "/main_view.html" request (main-view request))
   (GET "/admin_controller.html" request (admin-controller request))
   (DELETE "/videos/:id" [id]
@@ -134,7 +131,7 @@
     (model/get-all-videos))
   (POST "/videos/" request
     (add-video request))
-  (POST "/" request (login request) #_(create shout)))
+  (POST "/" request (login request)))
 
 ;get '/videos/:level/:semester_number' do
 ;content_type :json

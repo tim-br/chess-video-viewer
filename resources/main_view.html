@@ -57,6 +57,12 @@
                 </a>
             </li>
 
+            <li id="intermediate" class="level">
+                <a href="#">
+                    Intermediate
+                </a>
+            </li>
+
             <li id="advanced" class="level">
                 <a href="#">
                     Advanced
@@ -192,6 +198,25 @@
       })
     });
 
+    $("#intermediate").click(function(e){
+      $('#hide-div').empty();
+      $("#video-view").empty();
+      $("#hide-div").append("<h3>Intermediate</h3>");
+      $("#hide-div").append("<br><h3 class='active-semester btn btn-lg btn-primary btn-block' >Semester 1<br><h3 class='semester-two btn btn-lg btn-primary btn-block'>Semester 2 </h3><h3 class='semester-three btn btn-lg btn-primary btn-block'>Semester 3</h3>");
+
+      $(".active-semester").on("click", function(e){
+        get_videos_ajax("intermediate", 1);
+        //append_videos($id, $(this).html());
+      });
+      $(".semester-two").on("click", function(e){
+        get_videos_ajax("intermediate", 2);
+        //append_videos($id, $(this).html());
+      });
+      $(".semester-three").on("click", function(e){
+        get_videos_ajax("intermediate", 3)
+      })
+    });
+
     $("#advanced").click(function(e){
       $('#hide-div').empty();
       $("#video-view").empty();
@@ -239,6 +264,9 @@
       }
       if(level === "my-advanced"){
         var newLevel = 2;
+      }
+      if(level === "intermediate"){
+        var newLevel = 3;
       }
       var mine = $.ajax({
          dataType: "json",

@@ -55,7 +55,7 @@
                 :semester_number (Integer/parseInt semester_number)
                 :is_beginner     (boolean (Boolean/valueOf is_beginner))
                 :is_advanced     (boolean (Boolean/valueOf is_advanced))
-                :is_intermediate     (boolean (Boolean/valueOf is_advanced))}))
+                :is_intermediate     (boolean (Boolean/valueOf is_intermediate))}))
 
 (defn delete-video!
   [id]
@@ -79,4 +79,7 @@
     (sql/query spec ["SELECT * FROM videos WHERE semester_number = ? AND is_beginner = ? " (Integer/parseInt semester) (boolean (Boolean/valueOf "TRUE"))])
 
     2
-    (sql/query spec ["SELECT * FROM videos WHERE semester_number = ? AND is_advanced = ? " (Integer/parseInt semester) (boolean (Boolean/valueOf "TRUE"))])))
+    (sql/query spec ["SELECT * FROM videos WHERE semester_number = ? AND is_advanced = ? " (Integer/parseInt semester) (boolean (Boolean/valueOf "TRUE"))])
+
+    3
+    (sql/query spec ["SELECT * FROM videos WHERE semester_number = ? AND is_intermediate = ? " (Integer/parseInt semester) (boolean (Boolean/valueOf "TRUE"))])))
