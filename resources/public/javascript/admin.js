@@ -22,6 +22,7 @@ function dumpAllVideos(){
                $("#delete-div").append("<p><b> Title: "+data[i].title+"</b></p>");
                $("#delete-div").append("<p> URL: "+data[i].url+"</p>");
                $("#delete-div").append("<p> is beginner: "+data[i].is_beginner+"</p>");
+               $("#delete-div").append("<p> is intermediate: "+data[i].is_intermediate+"</p>");
                $("#delete-div").append("<p> is advanced: "+data[i].is_advanced+"</p>");
                $("#delete-div").append("<p> Week Number: "+data[i].week_number+"</p>");
                $("#delete-div").append("<p> Semester Number: "+data[i].semester_number+"</p>");
