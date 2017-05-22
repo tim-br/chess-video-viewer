@@ -14,11 +14,11 @@
     </license>
   </licenses>
   <scm>
-    <connection>scm:git:git://github.com/technomancy/shouter.git</connection>
-    <developerConnection>scm:git:ssh://git@github.com/technomancy/shouter.git</developerConnection>
-    <tag>531314a7b7cf132d539d4e73e18347784f697b65
+    <connection>scm:git:git://github.com/tmtwd/chess-video-viewer.git</connection>
+    <developerConnection>scm:git:ssh://git@github.com/tmtwd/chess-video-viewer.git</developerConnection>
+    <tag>98b6bfd364c561d5643dcb8b218b768690f663ec
 </tag>
-    <url>https://github.com/technomancy/shouter</url>
+    <url>https://github.com/tmtwd/chess-video-viewer</url>
   </scm>
   <build>
     <sourceDirectory>src</sourceDirectory>
@@ -66,7 +66,12 @@
     <dependency>
       <groupId>org.clojure</groupId>
       <artifactId>clojure</artifactId>
-      <version>1.7.0</version>
+      <version>1.8.0</version>
+    </dependency>
+    <dependency>
+      <groupId>org.clojure</groupId>
+      <artifactId>clojurescript</artifactId>
+      <version>1.9.542</version>
     </dependency>
     <dependency>
       <groupId>org.clojure</groupId>

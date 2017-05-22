@@ -10,3 +10,5 @@ logfile
 *.iml
 .lein-*
 .nrepl-port
+target/classes target/repl-port target/shouter-0.0.2.jar target/shouter-standalone.jar target/stale
+shouter.iml

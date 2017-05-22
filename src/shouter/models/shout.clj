@@ -3,8 +3,19 @@
             [crypto.password.bcrypt :as password])
   (:import (java.sql BatchUpdateException)))
 
-(def spec (or (System/getenv "DATABASE_URL")
-              "postgresql://localhost:5432/shouter"))
+  ;; new spec for digital ocean
+  (def spec {:dbtype "postgresql"
+              :dbname "toplevelchess"
+              :host "localhost"
+              :user "postgres"
+              :password "postgres"})
+
+  ;; old spec
+  #_(def spec (or (System/getenv "DATABASE_URL")
+                {:dbtype "postgresql"
+                 :dbname "top_level"
+                 :host "localhost"
+                 :user "timothy"}))
 
 (defn all []
   (into [] (sql/query spec ["select * from shouts order by id desc limit 128"])))
@@ -50,7 +61,8 @@
   [{:keys [title url week_number semester_number is_beginner is_advanced is_intermediate]}]
   (sql/insert! spec
                :videos
-               {:title           title :url url
+               {:title           title
+                :url url
                 :week_number     (Integer/parseInt week_number)
                 :semester_number (Integer/parseInt semester_number)
                 :is_beginner     (boolean (Boolean/valueOf is_beginner))
@@ -79,7 +91,42 @@
     (sql/query spec ["SELECT * FROM videos WHERE semester_number = ? AND is_beginner = ? " (Integer/parseInt semester) (boolean (Boolean/valueOf "TRUE"))])
 
     2
-    (sql/query spec ["SELECT * FROM videos WHERE semester_number = ? AND is_advanced = ? " (Integer/parseInt semester) (boolean (Boolean/valueOf "TRUE"))])
+    (sql/query spec ["SELECT * FROM videos WHERE semester_number = ? AND is_intermediate = ? " (Integer/parseInt semester) (boolean (Boolean/valueOf "TRUE"))])
 
     3
-    (sql/query spec ["SELECT * FROM videos WHERE semester_number = ? AND is_intermediate = ? " (Integer/parseInt semester) (boolean (Boolean/valueOf "TRUE"))])))
+    (sql/query spec ["SELECT * FROM videos WHERE semester_number = ? AND is_advanced = ? " (Integer/parseInt semester) (boolean (Boolean/valueOf "TRUE"))])))
+
+;; seed database with data
+(comment
+  (do
+    (insert-video! {:title           "fun video"
+                    :url             "https://www.youtube.com/embed/VQTfyuEdNfo"
+                    :week_number     "1"
+                    :semester_number "1"
+                    :is_beginner     "true"})
+    (insert-video! {:title "polish guru"
+                    :url "https://www.youtube.com/embed/NgZM-05i6kQ"
+                    :week_number "2"
+                    :semester_number "1"
+                    :is_beginner "true"})
+    (insert-video! {:title "ramsay"
+                    :url "https://www.youtube.com/embed/aaU67brhu8s"
+                    :week_number "5"
+                    :semester_number "2"
+                    :is_intermediate "true"})
+    (insert-video! {:title "ramsay-beginner"
+                    :url "https://www.youtube.com/embed/aaU67brhu8s"
+                    :week_number "2"
+                    :semester_number "2"
+                    :is_beginner "true"})
+    (insert-video! {:title "fisher-intermediate"
+                    :url "https://www.youtube.com/embed/b1fSkVFj1XU"
+                    :week_number "2"
+                    :semester_number "2"
+                    :is_intermediate "true"})
+    (insert-video! {:title "fisher-advanced"
+                    :url "https://www.youtube.com/embed/b1fSkVFj1XU"
+                    :week_number "2"
+                    :semester_number "3"
+                    :is_advanced "true"})))
+
